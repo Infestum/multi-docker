@@ -9,12 +9,12 @@ script:
   - docker run -e CI=true alex/react-test npm test
 
 after_success:
-  - docker build -t alex/multi-client ./client
-  - docker build -t alex/multi-nginx ./nginx
-  - docker build -t alex/multi-server ./server
-  - docker build -t alex/multi-worker ./worker
+  - docker build -t alexhomesearch/multi-client ./client
+  - docker build -t alexhomesearch/multi-nginx ./nginx
+  - docker build -t alexhomesearch/multi-server ./server
+  - docker build -t alexhomesearch/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push alex/multi-client
-  - docker push alex/multi-nginx
-  - docker push alex/multi-server
-  - docker push alex/multi-worker
+  - docker push alexhomesearch/multi-client
+  - docker push alexhomesearch/multi-nginx
+  - docker push alexhomesearch/multi-server
+  - docker push alexhomesearch/multi-worker
