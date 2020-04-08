@@ -1,0 +1,33 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "alexhomesearch/multi-client",
+      "hostname": "client",
+      "essential": false
+    }, {
+      "name": "server",
+      "image": "alexhomesearch/multi-server",
+      "hostname": "api",
+      "essential": false
+    }, {
+      "name": "worker",
+      "image": "alexhomesearch/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    }, {
+      "name": "nginx",
+      "image": "alexhomesearch/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
